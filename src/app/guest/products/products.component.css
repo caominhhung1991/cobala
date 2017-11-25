@@ -1,0 +1,181 @@
+.card {
+    width: 100% !important;
+}
+
+.col-md-3, .col-sm-4, .col-xs-6 {
+    padding: 0;
+}
+
+.card {
+    /* border: 0; */
+    /* border-radius: 0; */
+    border: 1.2px solid white;
+    /* cursor: pointer; */
+    position: relative;
+    height: 100%;
+}
+
+.card:hover {
+    border: 1.2px solid lightgray;
+    /* transition: 0.2s ease; */
+    
+}
+
+.btn-primary {
+    background-color: #C63829;
+    border: 0;
+}
+
+.add-to-cart {
+    /* position: absolute; */
+    /* bottom: 10px; */
+    visibility: hidden;
+    cursor: pointer;
+}
+
+.card:hover .add-to-cart{
+    visibility: visible;
+    
+}
+
+.product-info {
+    color: #666;
+    line-height: 18px;
+    font-size: 13px;
+}
+
+.product-price {
+    font-size: 18px;
+    font-weight: 700 !important;
+    color: #C63829;
+    margin-right: 4px;
+}
+
+.product-a {
+    text-decoration: none;
+}
+
+.card-img-top {
+    height: 250px !important;
+    cursor: pointer;
+}
+.card-text {
+    height: 40px !important;
+    overflow: hidden;
+}
+
+/* sssssssssssssssss */
+
+  
+#tab_content_product_specifications {
+    /* width: 800px; */
+}
+.row-info {
+    font-size: 13px;
+}
+
+.row-info td:nth-child(1) {
+    width: 200px;
+    background: #F7F7F7 !important;
+}
+
+.thong-tin-san-pham {
+    width: 100%;
+}
+
+.display-4 {
+    font-size: 2.5rem;
+}
+
+h3 {
+    font-size: 20px;
+}
+
+p, li, div {
+    font-size: 13px;
+}
+
+.item-price {
+    font-size: 18px;
+    font-weight: 700 !important;
+    color: #C63829;
+    margin-right: 4px;
+}
+
+.gioi-thieu-san-pham {
+    display: flex;
+}
+
+.product_gallery {
+    /* display: flex; */
+}
+
+.product_info {
+    /* display: flex; */
+}
+
+.item-title {
+    font-size: 29px;
+}
+
+/* product image */
+.product-info {
+    background: white;
+    /* padding: 20px; */
+}
+
+.image {
+    width: 100%;
+}
+
+.display-4 {
+    font-size: 20px;
+}
+
+.nav-link {
+    color: #333 !important;
+}
+
+.price-present {
+    font-size: 18px;
+    font-weight: 700 !important;
+    color: #C63829;
+    margin-right: 4px;
+}
+
+.btn-primary {
+    background-color: #C63829;
+    border: 0;
+}
+
+#myTab, #myTabContent {
+    background: white;
+}
+
+#myTabContent {
+    padding: 20px;
+}
+
+.nav-item .active {
+    color: red !important;
+    border-bottom: 3px solid red;
+}
+.input-group {
+    margin-bottom: 5px;
+}
+.input-group-addon {
+    width: 130px;
+}
+
+.form-inline {
+    
+}
+
+.form-inline input[type='radio'] {
+    margin-top: -17px;
+    margin-left: 10px;
+}
+
+.form-inline label {
+    margin-top: -17px;
+}

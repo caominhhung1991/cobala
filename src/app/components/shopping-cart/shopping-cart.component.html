@@ -1,0 +1,49 @@
+<!-- Modal -->
+<div class="modal fade" id="shopping-cart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Giỏ hàng của bạn - có {{testNum}} sản phẩm trong giỏ</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button> 
+      </div>
+      <div class="modal-body">
+        <table class="table">
+          <thead class="thead-default">
+            <tr>
+              <th>SẢN PHẨM</th>
+              <th>ĐƠN GIÁ</th>
+              <th>SỐ LƯỢNG</th>
+              <th>THÀNH TIỀN</th> 
+            </tr>
+          </thead>
+          <tr *ngFor="let item of cart_products, let i = index">
+            <td class="product-info w-100">
+              <img class ="d-inline-block img-thumbnail w-25 h-25 mr-2" [src]="item.product_image" (click)="selectProductDetail(item)">
+              <span class="d-inline-block">{{item.product_name}}
+                <br> <i class="fa fa-window-close" (click)="DeleteProduct(i)"></i>
+              </span>
+            </td>
+            <td>{{item.price | number}}đ</td>
+            <td>
+              <input #quantity type="number" value="{{item.quantity}}" min="1" max="1000" (change)="[tinhTotalPrice(quantity.value, item.price, i), TinhTongTienCart()]">
+            </td>
+            <td id="thanh-tien" class="thanh-tien">{{ item.total_price | number }}đ</td>
+          </tr>
+
+          <tr>
+            <td class="" colspan="3" style="font-weight: bold; text-align: right;  font-size: 20px">Tổng tiền</td>
+            <td style="font-weight: bold; color: rgb(207, 6, 6); font-size: 20px">{{cart_products.tong_tien | number}}</td>
+          </tr>
+        </table>
+        
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-arrow-left"></i> Tiếp tục mua hàng</button>
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#hoan-tat-thanh-toan" (click)="hoanTatThanhToan()">Tiếp tục thanh toán <i class="fa fa-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+</div>

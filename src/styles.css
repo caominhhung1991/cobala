@@ -1,0 +1,65 @@
+/* You can add global styles to this file, and also import other style files */
+.pointer {
+    cursor: pointer;
+}
+
+.required {
+    color: #dc143c;
+    font-size: 11px;
+}
+
+.red {
+
+}
+
+.hover:hover {
+    background: rgb(241, 241, 241);
+    font-weight: bold;
+}
+
+.hover-red:hover {
+    color: rgb(223, 0, 0);
+    font-weight: bold;
+}
+
+.hover-black:hover {
+    color: #333 !important;
+    font-weight: bold;
+}
+
+.font-22 {
+    font-size:22px;
+}
+
+/* // Extra small devices (porxtrait phones, less than 576px) */
+@media (min-width: 575px) {
+    .search-product {
+        width: 100% !important;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+/* // Small devices (landscape phones, less than 768px) */
+@media (min-width: 767px) {
+    .search-product {
+        width: 40% !important;
+    }
+}
+
+/* // Medium devices (tablets, less than 992px) */
+@media (min-width: 991px) { 
+    .search-product {
+        width: 30% !important;
+    }
+}

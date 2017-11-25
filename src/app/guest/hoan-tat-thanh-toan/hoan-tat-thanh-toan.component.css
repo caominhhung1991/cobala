@@ -1,0 +1,45 @@
+.input-group {
+    margin-bottom: 5px;
+}
+
+.dia-chi-nhan-hang {
+    padding: 10px;
+    border: 1px solid #e9ecef;
+    font-size: 14px;
+}
+
+/* input::-webkit-input-placeholder {
+    font-size: 14px;
+} */
+
+.dcnh-title {
+    border-bottom: 1px solid #e9ecef;
+    margin-bottom: 5;
+    padding-bottom: 5px;
+}
+
+.edit-dh {
+    color: red;
+    cursor: pointer;
+}
+
+.edit-dh:hover {
+    color: darkred;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+table {
+    font-size: 13px;
+}
+
+th {
+    font-size: 11px;
+}
+.form-group {
+    margin-bottom: 0.7rem;
+}
+/* .form-control {
+    padding: .25rem .55rem;
+    border-radius: .35rem;
+} */

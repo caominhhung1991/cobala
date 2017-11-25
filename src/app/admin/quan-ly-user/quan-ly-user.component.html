@@ -1,0 +1,51 @@
+<app-nav-admin [isActive]='3'></app-nav-admin>
+<h1 class="text-center mx-2">Quản lý User</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div id="accordion" role="tablist">
+        <div class="card mb-1" *ngFor="let user of users, index as i, first as f">
+          <a data-toggle="collapse" href="#collapse{{i}}" aria-expanded="false">
+            <div class="card-header" role="tab" id="heading{{i}}">
+              <h5 class="mb-0">
+                {{i+1}} - {{user.name}} - {{user.email}} -
+                <span class="text-danger">{{user.role}}</span>
+              </h5>
+            </div>
+          </a>
+          <div id="collapse{{i}}" class="collapse" role="tabpanel" data-parent="#accordion" *ngIf="user.role !== 'admin'">
+            <div class="card-body">
+              <button class="btn btn-sm btn-outline-success" (click)="onSelect(user)" data-toggle="modal" data-target="#xem-don-hang">Xem đơn hàng</button>
+              <button class="btn btn-sm btn-outline-info" data-toggle="modal" data-target="#sua-thong-tin" (click)="onSelect(user)">Cập nhật</button>
+              <button class="btn btn-sm btn-outline-danger" (click)="deleteUser(user._id)">Xoá user</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- </div>
+    <div class="col-md-6">
+
+    </div> -->
+
+  </div>
+
+  <app-sua-thong-tin *ngIf="selectedUser" [inputUser]="selectedUser"></app-sua-thong-tin>
+
+  <!-- Modal Xem order bằng guest id -->
+  <!-- Modal -->
+  <div class="modal fade" id="xem-don-hang" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="exampleModalLabel">Thông tin đơn hàng</h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <app-lich-su-don-hang *ngIf="selectedUser" [user]="selectedUser"></app-lich-su-don-hang>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,80 @@
+<!-- Modal -->
+<div class="modal fade" id="sua-thong-tin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Cập nhật tài khoản</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group form-group">
+            <label for="ho-ten">Họ và Tên
+              <span class="required">*</span>
+            </label>
+            <input type="text" class="form-control form-control-sm" [(ngModel)]="user.name" id="ho-ten" aria-describedby="hotenHelp"
+              placeholder="Họ và Tên" name="name" required #name="ngModel">
+            <!-- <small id="hotenHelp" class="form-text text-muted">vd: Cao Minh Hưng</small> -->
+            <div *ngIf="name.invalid && (name.dirty || name.touched || messageError.name)">
+              <div *ngIf="name.errors.required">
+                <span class="required">Họ tên không được để trống</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Phone -->
+          <div class="form-group">
+            <label for="phone">Số điện thoại
+              <span class="required">*</span>
+            </label>
+            <input type="phone" class="form-control form-control-sm" [(ngModel)]="user.phone" id="phone" aria-describedby="phoneHelp"
+              placeholder="Số điện thoại" name="phone" required #phone="ngModel">
+            <div *ngIf="phone.invalid && (phone.dirty || phone.touched || messageError.phone)">
+              <div *ngIf="phone.errors.required">
+                <span class="required">Số điện thoại không được để trống</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="birthday">Ngày sinh</label>
+            <input type="date" class="form-control form-control-sm" [(ngModel)]="user.birthday" value="{{user.birthday}}" id="birthday"
+              aria-describedby="birthdayHelp" placeholder="Ngày sinh" min="1920-01-01" max="2020-12-31" name="birthday">
+          </div>
+
+          <div class="form-group">
+            <label for="city">Thành phố
+              <span class="required">*</span>
+            </label>
+            <input type="text" class="form-control form-control-sm" [(ngModel)]="user.city" id="city" aria-describedby="cityHelp"
+              placeholder="Địa chỉ" name="city" required #city="ngModel">
+            <div *ngIf="city.invalid && (city.dirty || city.touched || messageError.city)">
+              <div *ngIf="city.errors.required">
+                <span class="required">Địa chỉ không được để trống</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="address">Địa chỉ
+              <span class="required">*</span>
+            </label>
+            <input type="text" class="form-control form-control-sm" [(ngModel)]="user.address" id="address" aria-describedby="addressHelp"
+              placeholder="Địa chỉ" name="address" required #address="ngModel">
+            <div *ngIf="address.invalid && (address.dirty || address.touched || messageError.address)">
+              <div *ngIf="address.errors.required">
+                <span class="required">Địa chỉ không được để trống</span>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info btn-md" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-success btn-md" (click)="updateUser()">Cập nhật</button>
+      </div>
+    </div>
+  </div>
+</div>

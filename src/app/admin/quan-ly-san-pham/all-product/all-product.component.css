@@ -1,0 +1,41 @@
+td {
+    padding: 10px;
+}
+
+table {
+    table-layout: fixed;
+}
+
+table, td {
+    border-collapse: collapse;
+    vertical-align: top;
+    border-top: 1px solid #e9ecef; 
+}
+
+th {
+    text-align: center;
+    font-size: 13px;
+}
+
+tr {
+    cursor: pointer;
+    font-size: 13px;
+}
+
+tr:hover {
+    background: rgba(0,0,0,0.1);
+}
+
+.name {
+    width: 25%;
+    overflow-x: hidden;
+}
+.image-url {
+    max-width: 100px;
+    overflow-x: hidden;
+}
+
+/* 
+@media only screen and (max-width: 768px) {
+    
+} */

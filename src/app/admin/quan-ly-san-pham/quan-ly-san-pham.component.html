@@ -1,0 +1,75 @@
+<app-nav-admin [isActive]="2"></app-nav-admin>
+
+<div class="container-fluid quan-ly-san-pham">
+    <div class="row wrapper">
+        <div class="col-md-2 col-1 pl-0 pr-0 collapse width show" id="sidebar">
+            <div class="list-group border-0 card text-center text-md-left">
+                <a data-toggle="tab" href="#new-product" roll="tab" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"
+                    aria-controls="new-product">
+                    <i class="fa fa-hand-lizard-o"></i>
+                    <span class="d-none d-md-inline">
+                        Thêm sản phẩm
+                    </span>
+                </a>
+
+                <a class="list-group-item d-inline-block collapsed" data-toggle="tab" href="#all" roll="tab" aria-controls="all" (click)="getProducts()">
+                    <i class="fa fa-database"></i>
+                    <span class="d-none d-md-inline">Sản phẩm
+                        <span class="badge badge-info"></span>
+                    </span>
+                </a>
+
+                <a data-toggle="tab" href="#phieu-nhap-hang" roll="tab" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"
+                    aria-controls="phieu-nhap-hang">
+                    <i class="fa fa-ticket"></i>
+                    <span class="d-none d-md-inline">
+                        Phiếu nhập kho
+                    </span>
+                </a>
+
+                <a class="list-group-item d-inline-block collapsed" data-toggle="tab" href="#kho" roll="tab" aria-controls="kho" (click)="getProducts()">
+                    <i class="fa fa-database"></i>
+                    <span class="d-none d-md-inline">Kho
+                        <span class="badge badge-info"></span>
+                    </span>
+                </a>
+
+                <a href="#loai-san-pham" class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false">
+                    <i class="fa fa-truck"></i>
+                    <span class="d-none d-md-inline">Loại sản phẩm</span>
+                </a>
+
+                <div class="collapse" id="loai-san-pham">
+                    <a class="list-group-item" data-parent="#loai-san-pham" [style.cursor]="'pointer'">Chăm sóc da
+                        <span class="badge badge-light">30</span>
+                    </a>
+
+                    <a class="list-group-item" data-parent="#loai-san-pham" [style.cursor]="'pointer'">Chăm sóc body
+                        <span class="badge badge-light">10</span>
+                    </a>
+
+                    <a class="list-group-item" data-parent="#loai-san-pham" [style.cursor]="'pointer'">Son môi
+                        <span class="badge badge-light">15</span>
+                    </a>
+                </div>
+               
+            </div>
+        </div>
+        <main class="col-md-10 pb-4 pt-3">
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade" id="new-product" role="tabpanel">
+                    <app-them-san-pham></app-them-san-pham>
+                </div>
+                <div class="tab-pane fade show active" id="phieu-nhap-hang" role="tabpanel">
+                    <app-phieu-nhap-kho></app-phieu-nhap-kho>
+                </div>
+                <div class="tab-pane fade" id="all" role="tabpanel">
+                    <app-all-product></app-all-product>
+                </div>
+                <div class="tab-pane fade" id="kho" role="tabpanel">
+                    <app-kho></app-kho>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>

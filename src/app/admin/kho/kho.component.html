@@ -1,0 +1,126 @@
+<div class="row">
+  <div class="col-md-12">
+    <div id="accordion" role="tablist">
+      <div class="card mb-1" *ngFor="let product of products, index as i, first as f">
+        <a data-toggle="collapse" href="#collapse{{i}}" aria-expanded="false" (click)="onSelect(product)">
+          <div class="card-header" role="tab" id="heading{{i}}">
+            <h5 class="mb-0">
+              {{i+1}} - {{product.product_id}} - Số lượng tồn: {{product.quantity}} {{product.don_vi_tinh}} - Giá: {{product.price | number}}đ
+            </h5>
+          </div>
+        </a>
+        <div id="collapse{{i}}" class="collapse" role="tabpanel" data-parent="#accordion">
+          <div class="card-body" *ngIf="product === selectedProduct" >
+            <button class="btn btn-sm btn-outline-success" data-toggle="modal" data-target="#xem-san-pham">Xem chi tiết</button>
+            <button class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#lich-su-nhap-xuat">Xem lịch sử nhập xuất kho</button>
+            <img src="{{product_detail?.product_image}}" alt="" height="30px">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Modal -->
+  <!-- xem san pham chi tiet trong kho -->
+  <div class="modal fade" id="xem-san-pham" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="exampleModalLabel">Thông tin chi tiết</h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6">
+
+              <div class="form-group">
+                <label>Mã sản phẩm</label>
+                <input type="text" class="form-control form-control-sm" value="{{selectedProduct?.product_id}}">
+              </div>
+
+              <div class="form-group">
+                <label>Tên sản phẩm</label>
+                <input type="text" class="form-control form-control-sm" value="{{product_detail.product_name}}">
+              </div>
+
+              <div class="form-group">
+                <label>Số lượng còn lại trong kho</label>
+                <input type="text" class="form-control form-control-sm" value="{{selectedProduct?.quantity}} {{selectedProduct?.don_vi_tinh}}">
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <img src="{{product_detail.product_image}}" width="100%">
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- xem lich su nhap xuat kho -->
+  <div class="modal fade" id="lich-su-nhap-xuat" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="exampleModalLabel">Lịch sử nhập xuất kho</h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Mã phiếu</th>
+                <th>Người lập</th>
+                <th>Loại</th>
+                <th>Số lượng</th>
+                <th>Đơn giá</th>
+                <th>Thành tiền</th>
+                <th>Thời gian</th>
+              </tr>
+            </thead>
+            <tbody *ngIf="phieuNhapXuat">
+              <tr *ngFor="let phieu of phieuNhapXuat, index as i">
+                <td>{{phieu.phieu_id}}</td>
+                <td>{{phieu.nguoi_lap_phieu}}</td>
+                <td>{{phieu.kind}}</td>
+                <td>
+                  <span *ngFor="let p of phieu.products_detail">
+                    <span *ngIf="p._id === selectedProduct._id">
+                      {{p.quantity}} {{p.don_vi_tinh}}
+                    </span>
+                  </span>
+                </td>
+
+                <td>
+                    <span *ngFor="let p of phieu.products_detail">
+                      <span *ngIf="p._id === selectedProduct._id">
+                        {{p.price | number}}đ
+                      </span>
+                    </span>
+                  </td>
+
+                <td>
+                  <span *ngFor="let p of phieu.products_detail">
+                    <span *ngIf="p._id === selectedProduct._id">
+                      {{p.total_price | number}}đ
+                    </span>
+                  </span>
+                </td>
+
+                <td>{{phieu.nowDate | date}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>

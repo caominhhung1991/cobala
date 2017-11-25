@@ -1,0 +1,29 @@
+<div *ngIf="check">
+    <h5>Bình luận nổi bật</h5>
+    <section class="mb-3" *ngFor="let com of comments">
+      <h5 class="comment-heading">{{ com.nameUser }}</h5>
+      <span class="ngayHT"> {{com.time | date}}</span>
+      <p class="comment-text">{{ com.productComment }}</p>
+    </section>
+    <hr>
+</div>
+
+
+<h5>Đánh giá & Bình luận</h5>
+
+<div class="form-group">
+  <input type="text" placeholder="Tên của bạn.." class="form-control w-30" name="name" [(ngModel)]="nameUser" #name="ngModel">
+</div>
+
+<div class="form-group">
+  <textarea name="comment" id="comment" rows="3" placeholder="Nhập bình luận của bạn..." class="form-control" (focus)="showBtnGui(true)" [(ngModel)]="productComment" #comment="ngModel"></textarea>
+  <button *ngIf="focusComment" class="btn btn-outline-danger mt-2 btn-comment pointer" (click)="addComment()">Gửi bình luận</button>
+</div>
+
+<!-- <div class="rating font-22">
+  <span>☆</span>
+  <span>☆</span>
+  <span>☆</span>
+  <span>☆</span>
+  <span>☆</span>
+</div> -->

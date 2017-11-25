@@ -1,0 +1,168 @@
+nav {
+    background: #FAEFF4 !important;
+    /* position: relative; */
+}
+
+input[type=search] {
+    background: #FAEFF4 !important;
+    border-radius: 20px; 
+    border-right: none;
+}
+
+input[type=search]:focus {
+    
+}
+
+.input-group-addon {
+    background: #FAEFF4;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    cursor: pointer;
+    border-left: none;
+    color: lightgray;
+}
+
+.shopping-cart {
+    font-size: 30px;
+    color: white;
+    background: #D87179;
+    padding: 10px;
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+}
+
+.num-of-product {
+    position: absolute;
+    right: 0;
+    font-size: 13px;
+    color: white;
+    height: 20px;
+    width: 20px;
+    line-height: -10px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 50%;
+    background-color: rgb(224, 0, 0);
+}
+/* Điều hướng */
+/* .slider {
+    padding: 50px 0 50px 0;
+    background-image: url("../../../assets/gioi-thieu6.jpg");
+    background-size: cover;
+} */
+
+
+.nav2 {
+    position: relative;
+    
+}
+
+.dieu-huong {
+    list-style-type: none;
+    display: flex;
+    margin: 0;
+    padding: 15px 0;
+}
+
+.dieu-huong li {
+    float: left;
+    
+}
+
+
+.dieu-huong a {
+    display: block;
+    background: white;
+    padding: 8px 18px;
+    color: black;
+    border: 0.5px solid rgb(228, 228, 228);
+}
+
+.dieu-huong a:hover {
+    background: #FAEFF4;
+    text-decoration: none;
+    color: #333 !important;
+}
+
+.active {
+    background: #D87179 !important;
+    color: white !important;
+}
+
+
+.left {
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+
+.right {
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+.dang-ky {
+    position: absolute;
+    right: 20px;
+    top: 17px;
+    font-size: 14px;
+}
+
+.dang-ky a {
+    color: black;
+    
+}
+
+.dang-ky a:hover {
+    color: darkred;
+    text-decoration: underline;
+}
+
+.fa-sort-desc {
+    position: relative;
+    top: -3px;
+}
+
+.fa-user-o {
+    font-size: 30px;
+}
+
+#user-login, #user-info {
+    width: 250px;
+    position: absolute;
+    top: 45px;
+    right: -30px;
+    z-index: 10;
+}
+
+.dktk {
+    color: rgb(2, 140, 253) !important;
+}
+
+thead > tr > th {
+    cursor: pointer;
+}
+
+.search-form {
+    position: relative;
+}
+
+#search-result {
+    margin-top: 2px;
+    position: absolute;
+    top: 45px;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 5px;
+    border-radius: 10px;
+}
+
+#search-result li {
+    padding: 3px 3px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#search-result li:hover {
+    background-color: rgba(212, 211, 211, 0.5);
+}

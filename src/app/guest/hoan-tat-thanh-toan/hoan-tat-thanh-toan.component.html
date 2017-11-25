@@ -1,0 +1,108 @@
+<app-nav-guest></app-nav-guest>
+<div class="container">
+  <div class="row hoan-tat-thanh-toan mt-3">
+    <div class="col-md-6">
+      <form class="dia-chi-nhan-hang" (submit)="onSubmit($event)">
+        <h5 class="dcnh-title">
+          <div class="fa fa-map-marker"></div> Địa chỉ nhận hàng</h5>
+        <div class="form-group">
+          <span class="label-control" for="ho-ten">Họ tên:
+            <span class="required">*</span>
+          </span>
+          <input type="text" id="ho-ten" class="form-control" placeholder="Ví dụ: Cao Minh Hưng" required name="name" [(ngModel)]="ttdh.name" #name="ngModel">
+
+          <div *ngIf="name.invalid && (name.dirty || name.touched || messageError.name)">
+            <div *ngIf="name.errors.required">
+              <span class="required">Họ tên không được để trống</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <span class="label-control">Điện thoại:
+            <span class="required" >*</span>
+          </span>
+          <input type="text" class="form-control" placeholder="Ví dụ: 01218815991" required name="phone" [(ngModel)]="ttdh.phone" #phone="ngModel">
+
+          <div *ngIf="phone.invalid && (phone.dirty || phone.touched || messageError.phone)">
+            <div *ngIf="phone.errors.required">
+              <span class="required">Số điện thoại không được để trống</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <span class="label-control">Email:</span>
+          <input type="email" class="form-control" [(ngModel)]="ttdh.email" name="email" placeholder="support@gmail.com" >
+        </div>
+
+        <div class="form-group">
+          <span class="label-control">Thành phố:
+            <span class="required">*</span>
+          </span>
+          <input type="text" class="form-control" placeholder="Phường 4, Quận Gò Vấp, Hồ Chí Minh" required name="city" [(ngModel)]="ttdh.city" #city="ngModel">
+          <div *ngIf="city.invalid && (city.dirty || city.touched || messageError.city)">
+            <div *ngIf="city.errors.required">
+              <span class="required">Thành phố không được để trống</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <span class="label-control" >Địa chỉ chi tiết:
+            <span class="required">*</span>
+          </span>
+          <input type="text" class="form-control" placeholder="Ví dụ: số 10, Ngõ 50, Ngách 100, Hẽm 22" required name="address" [(ngModel)]="ttdh.address" #address="ngModel">
+          <div *ngIf="address.invalid && (address.dirty || address.touched || messageError.address)">
+            <div *ngIf="address.errors.required">
+              <span class="required">Địa chỉ chi tiết không được để trống</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="label-control" for="loi-nhan">Lời nhắn:</label>
+          <textarea name="loi-nhan" id="loi-nhan" cols="20" rows="2" class="form-control" [(ngModel)]="ttdh.loi_nhan" placeholder="Ví dụ: Giao ngoài giờ hành chính"></textarea>
+        </div>
+        <button class="btn btn-danger" type="submit" style="cursor: pointer">Hoàn tất đặt hàng
+          <i class="fa fa-arrow-right"></i>
+        </button>
+        <button class="btn btn-info" type="submit" style="cursor: pointer" (click)="reload()">Refresh <i class="fa fa-refresh"></i>
+        </button>
+      </form>
+    </div>
+    <div class="col-md-6">
+      <table class="table">
+        <thead class="thead-default">
+          <tr>
+            <th>Sản phẩm -
+              <span class="edit-dh" data-toggle="modal" data-target="#shopping-cart">Sửa đơn hàng</span>
+            </th>
+            <th>Đơn giá</th>
+            <th>SLượng</th>
+            <th>Thành tiền</th>
+          </tr>
+        </thead>
+        <tr *ngFor="let item of products, let i = index">
+          <td class="product-info w-100">
+            <img class="d-inline-block img-thumbnail w-25 mr-2" [src]="item.product_image">
+            <span class="d-inline-block">{{item.product_name}}
+            </span>
+          </td>
+
+          <td>{{item.price | number}}</td>
+          <td>
+            {{item.quantity}}
+          </td>
+          <td id="thanh-tien" class="thanh-tien" style="font-weight: bold;">{{ item.total_price | number }}</td>
+        </tr>
+
+        <tr>
+          <td class="" colspan="3" style="font-weight: bold; text-align: right;  font-size: 20px">Tổng tiền</td>
+          <td style="font-weight: bold; color: rgb(207, 6, 6); font-size: 20px">{{products?.tong_tien | number}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+<app-shopping-cart></app-shopping-cart>

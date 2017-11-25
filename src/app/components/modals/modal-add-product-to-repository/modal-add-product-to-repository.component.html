@@ -1,0 +1,91 @@
+<!-- Modal -->
+<div class="modal fade" id="add-product-to-repository" tabindex="-1" role="dialog" aria-labelledby="add-product-to-repositoryLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="add-product-to-repositoryLabel">Thêm một sản phẩm</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+ 
+        <form>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-6">
+                <label for="product_name">Tên sản phẩm</label>
+                <select #productName class="form-control form-control-sm" id="product_name" (change)="onSelect(productName.value)">
+                  <option *ngFor="let product of products" >
+                    {{product.product_name}}
+                  </option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label for="product_id">Mã sản phẩm</label>
+                <input *ngIf="selectedProduct" type="text" class="form-control form-control-sm" id="product_id" placeholder="Mã sản phẩm" [(ngModel)]="selectedProduct.product_id"
+                  name="product_id">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-6">
+                  <label for="don-vi-tinh">Đơn vị tính</label>
+                  <select *ngIf="selectedProduct" id="don-vi-tinh" class="form-control form-control-sm" [(ngModel)]="selectedProduct.don_vi_tinh"  name="don_vi_tinh">
+                    <option value="Hộp" selected>Hộp</option>
+                    <option value="Thỏi">Thỏi</option>
+                    <option value="Tuýt">Tuýt</option>
+                  </select>
+              </div>
+
+              <div class="col-md-6">
+                  <label for="size">Trọng lượng</label>
+                  <input *ngIf="selectedProduct" id="size" class="form-control form-control-sm" type="text"
+                  [(ngModel)]="selectedProduct.product_size" name="size" disabled>
+              </div>
+            </div>
+            
+          </div>
+
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-4">
+                <label for="quantity">Số lượng</label>
+                <input *ngIf="selectedProduct" id="quantity" class="form-control form-control-sm" type="number" min="1" max="1000" (blur)="tinhThanhTien()"
+                  [(ngModel)]="selectedProduct.quantity" name="quantity">
+              </div>
+              <div class="col-md-4">
+                <label for="price">Đơn giá</label>
+                <input *ngIf="selectedProduct" id="price" class="form-control form-control-sm" type="number" min="1000" max="10000000" step="1000" (blur)="tinhThanhTien()"
+                  [(ngModel)]="selectedProduct.price" name="price">
+              </div>
+
+              <div class="col-md-4">
+                  <label for="thanh-tien">Thành tiền</label>
+                  <input *ngIf="selectedProduct" id="thanh-tien" class="form-control form-control-sm" type="number" [(ngModel)]="selectedProduct.total_price"
+                    name="total_price" disabled>
+              </div>
+            </div>
+          </div>
+ 
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-6">
+                  <label>Hình sản phẩm</label> <br>
+                  <img src="{{selectedProduct?.product_image}}" width="70px">
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="pushOneProduct()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

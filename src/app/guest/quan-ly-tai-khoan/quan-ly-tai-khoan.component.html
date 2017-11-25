@@ -1,0 +1,65 @@
+<app-nav-guest></app-nav-guest>
+
+<div class="container mt-3">
+    <nav class="nav nav-tabs" id="myTab" role="tablist">
+        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home"
+            aria-selected="true">thông tin cơ bản</a>
+        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile"
+            aria-selected="false">Lịch sử đơn hàng</a>
+    </nav>
+    <div class="tab-content mt-4" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+            <!-- button Sửa thông tin -->
+            <button class="btn btn-outline-info btn-sm" (click)="onSelect()" data-toggle="modal" data-target="#sua-thong-tin" >Sửa thông tin</button>
+
+            <!-- button Đổi password -->
+            <button class="btn btn-outline-danger btn-sm" (click)="onSelect()"
+            data-toggle="modal" data-target="#doi-password">Đổi password</button>
+            <h4 class="mt-3">THÔNG TIN CƠ BẢN VỀ TÀI KHOẢN CỦA QUÝ KHÁCH</h4>
+            <!-- <hr> -->
+            <table *ngIf="currentUser" class="table mt-3">
+                <tr>
+                    <td>Họ tên</td>
+                    <td>{{currentUser.name}}</td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>{{currentUser.email}}</td>
+                </tr>
+                <tr>
+                    <td>Ngày sinh</td>
+                    <td>{{currentUser.birthday || "Chưa có thông tin"}}</td>
+                </tr>
+
+                <tr>
+                    <td>Thành phố</td>
+                    <td>{{currentUser.city}}</td>
+                </tr>
+
+                <tr>
+                    <td>Địa chỉ</td>
+                    <td>{{currentUser.address}}</td>
+                </tr>
+                <tr>
+                    <td>Điện thoại</td>
+                    <td>{{currentUser.phone}}</td>
+                </tr>
+            </table>
+            
+        </div>
+ 
+        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+            <app-lich-su-don-hang></app-lich-su-don-hang>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- <app-sign-up [inputUser]="selectedUser"></app-sign-up> -->
+<app-sua-thong-tin [inputUser]="selectedUser"></app-sua-thong-tin>
+
+<app-doi-password [inputUserUpdate]="selectedUser"></app-doi-password>
+<!-- <app-doi-password></app-doi-password> -->
+
+<app-shopping-cart></app-shopping-cart>

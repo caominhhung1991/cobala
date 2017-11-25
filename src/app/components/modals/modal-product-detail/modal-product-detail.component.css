@@ -1,0 +1,94 @@
+  
+#tab_content_product_specifications {
+    /* width: 800px; */
+}
+.row-info {
+    font-size: 13px;
+}
+
+.row-info td:nth-child(1) {
+    width: 200px;
+    background: #F7F7F7 !important;
+}
+
+.thong-tin-san-pham {
+    width: 800px;
+}
+
+.display-4 {
+    font-size: 2.5rem;
+}
+
+h3 {
+    font-size: 20px;
+}
+
+p, li, div {
+    font-size: 13px;
+}
+
+.item-price {
+    font-size: 18px;
+    font-weight: 700 !important;
+    color: #C63829;
+    margin-right: 4px;
+}
+
+.gioi-thieu-san-pham {
+    display: flex;
+}
+
+.product_gallery {
+    /* display: flex; */
+}
+
+.product_info {
+    /* display: flex; */
+}
+
+.item-title {
+    font-size: 29px;
+}
+
+/* product image */
+.product-info {
+    background: white;
+    padding: 20px;
+}
+
+.image {
+    width: 100%;
+}
+
+.display-4 {
+    font-size: 20px;
+}
+
+.nav-link {
+    color: #333 !important;
+}
+
+.price-present {
+    font-size: 18px;
+    font-weight: 700 !important;
+    color: #C63829;
+    margin-right: 4px;
+}
+
+.btn-primary {
+    background-color: #C63829;
+    border: 0;
+}
+
+#myTab, #myTabContent {
+    background: white;
+}
+
+#myTabContent {
+    padding: 20px;
+}
+
+.nav-item .active {
+    color: red !important;
+    border-bottom: 3px solid red;
+}

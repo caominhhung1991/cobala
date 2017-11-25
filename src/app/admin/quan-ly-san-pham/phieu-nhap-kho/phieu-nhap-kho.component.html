@@ -1,0 +1,61 @@
+<h3 class="display-3 mb-4">Phiếu Nhập Kho - Ngày: {{phieuNhapKho.nowDate | date:'dd/MM/y'}}</h3>
+<table class="table table-bordered mt-2">
+    <thead class="thead-default">
+        <tr>
+            <th>Mã phiếu</th>
+            <th>Người lập phiếu</th>
+            <th>Thời gian lập</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td width="200px">
+                <input id="ma_phieu" type="text" class="form-control" placeholder="PNK201719101">
+            </td>
+            <td id="nguoi_lap_phieu">Cao Minh Hưng</td>
+            <td>{{phieuNhapKho.nowDate | date:'hh:mm - dd/MM/y'}}</td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- button Thêm sản phẩm -->
+<button class="btn btn-info" data-toggle="modal" data-target="#add-product-to-repository">Thêm sản phẩm</button>
+
+<app-modal-add-product-to-repository (oneProduct)="pushOneProduct($event)">
+</app-modal-add-product-to-repository>
+<button class="btn btn-success float-right" (click)="addPhieuNhapKho()">Lưu Phiếu Nhập Kho</button>
+
+<table class="table table-striped mt-3">
+    <thead class="thead-inverse">
+        <tr>
+            <th>STT</th>
+            <th>Tên SP</th>
+            <th>Mã</th>
+            <th>Đơn vị tính</th>
+            <th>Số lượng</th>
+            <th>Đơn giá</th>
+            <th>Thành tiền</th>
+            <th>Xoá</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let product of products, let i = index">
+            <td scope="row">{{i+1}}</td>
+            <td>{{product.product_name}}</td>
+            <td>{{product.product_id}}</td>
+            <td>{{product.don_vi_tinh}}</td>
+            <td>{{product.quantity}}</td>
+            <td>{{product.price}}</td>
+            <td>{{product.total_price}}</td>
+            <td>
+                <button class="btn btn-danger btn-sm" (click)="deleteOneProcut(i)">x</button>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="6" class="tong-tien">Tổng tiền</td>
+            <td colspan="2" class="thanh-tien">{{phieuNhapKho.tong_tien}}</td>
+        </tr>
+    </tbody>
+</table>
+

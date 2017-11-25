@@ -1,0 +1,49 @@
+<h3 class="display-4 mb-4">Phiếu Xuất Kho - Ngày: {{phieuXuatKho.nowDate | date:'dd/MM/y'}}</h3>
+<table class="table table-bordered mt-2">
+    <thead class="thead-default">
+        <tr>
+            <th>Mã phiếu</th>
+            <th>Người lập phiếu</th>
+            <th>Thời gian lập</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td width="200px">
+                <input id="ma_phieu" type="text" class="form-control" placeholder="PXK201719101">
+            </td>
+            <td id="nguoi_lap_phieu">Cao Minh Hưng</td>
+            <td>{{phieuXuatKho.nowDate | date:'hh:mm - dd/MM/y'}}</td>
+        </tr>
+    </tbody>
+</table>
+
+<table class="table table-striped mt-3">
+    <thead class="thead-inverse">
+        <tr>
+            <th>STT</th>
+            <th>Tên SP</th>
+            <th>Mã</th>
+            <th>Đơn vị tính</th>
+            <th>Số lượng</th>
+            <th>Đơn giá</th>
+            <th>Thành tiền</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let product of donhang.order_detail, let i = index">
+            <td scope="row">{{i+1}}</td>
+            <td>{{product.product_name}}</td>
+            <td>{{product.product_id}}</td>
+            <td>{{product.don_vi_tinh}}</td>
+            <td>{{product.quantity}}</td>
+            <td>{{product.price | number}}</td>
+            <td>{{product.total_price| number}}</td>
+        </tr>
+        <tr>
+            <td colspan="6" class="tong-tien text-right">Tổng tiền</td>
+            <td colspan="2" class="thanh-tien text-right">{{donhang.tong_tien | number}}đ</td>
+        </tr>
+    </tbody>
+</table>

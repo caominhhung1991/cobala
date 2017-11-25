@@ -1,0 +1,48 @@
+table {
+    width: 100%;
+}
+
+td {
+    padding: 10px;
+    font-size: 14px;
+}
+
+tr:first-child {
+    font-size: 13px;
+    padding-bottom: 10px;
+}
+
+tr:first-child td:nth-child(1) {
+    width: 50%;
+}
+
+tr:first-child td:nth-child(2) {
+    width: 15%;
+}
+
+tr:first-child td:nth-child(3){
+    width: 15%;
+}
+
+tr:first-child td:nth-child(4)  {
+    width: 20%;
+}
+
+.product-info {
+    
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.fa-window-close {
+    font-size: 19px;
+    color: red;
+}
+
+.fa-window-close:hover {
+    color: #333;
+}
+
+.thanh-tien {
+    font-weight: bold;
+}

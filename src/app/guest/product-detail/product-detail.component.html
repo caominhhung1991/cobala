@@ -1,0 +1,118 @@
+<app-nav-guest></app-nav-guest>
+
+<div style="background: #f5f5f5;">
+  <div class="">
+    <div class="gioi-thieu-san-pham row mb-4">
+      <div class="product-image col-md-4">
+        <img class="image" [src]="product?.product_image" alt="">
+      </div>
+      <div class="product-info col-md-8">
+        <h2 class="display-4">{{product?.product_name}}</h2>
+        <div class="price">
+          <span class="price-present">{{product?.price | number}}đ</span>
+        </div>
+
+        <!-- <app-go-back></app-go-back>  -->
+        <!-- <hr>
+
+        <div class="shopee-product-info-body__row shopee-product-info-body__free-shipping">
+          <span class="shopee-product-info-body__free-shipping-text">Miễn Phí Vận Chuyển cho đơn hàng có giá trị từ ₫180.000 (giảm tối đa 50.000 VNĐ)</span>
+        </div>
+        <div class="shopee-product-info-body__shipping-block-label">Vận chuyển tới: Hà Nội, Huyện Ba Vì</div>
+        <div class="shopee-product-info-body__shipping-block-label">phí vận chuyển: ₫0</div> -->
+        <hr>
+
+        <div class="btn-group mr-2" role="group" aria-label="First group">
+          <button type="button" class="btn btn-danger" (click)="decrease()">-</button>
+          <input type="number" style="width: 40px !important;" value="{{product?.quantity}}" min="1" max="20">
+          <button type="button" class="btn btn-danger" (click)="increase()">+</button>
+        </div>
+        <br>
+        <br>
+
+        <button class="btn btn-danger add-to-cart" data-toggle="modal" data-target="#shopping-cart" (click)="onSelect(product)">Cho vào giỏ hàng</button>
+        <!-- <a href="#" class="btn btn-info add-to-cart">Mua ngay</a> -->
+      </div>
+    </div>
+
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-expanded="true">
+          <h2 class="display-4">Thông số sản phẩm</h2>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" required>
+          <h2 class="display-4">Thông tin sản phẩm</h2>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" id="comment-tab" data-toggle="tab" href="#comment" role="tab" aria-controls="comments" (click)="onSelectID()">
+          <h2 class="display-4">Bình luận</h2>
+        </a>
+      </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <div class="thong-so-san-pham" id="tab_content_product_specifications">
+          <table class="table table-bordered" id="tblGeneralAttribute">
+            <tbody>
+              <tr class="row-info">
+                <td>
+                  <strong>Xuất xứ</strong>
+                </td>
+                <td>{{product?.product_madein}}</td>
+              </tr>
+
+              <tr class="row-info">
+                <td>
+                  <strong>Giới tính</strong>
+                </td>
+                <td>{{product?.product_gender}}</td>
+              </tr>
+
+              <tr class="row-info">
+                <td>
+                  <strong>Hướng dẫn sử dụng</strong>
+                </td>
+                <td>{{product?.product_instruction}}</td>
+              </tr>
+
+              <tr class="row-info">
+                <td>
+                  <strong>Hướng dẫn bảo quản</strong>
+                </td>
+                <td>Bảo quản nơi khô ráo, thoáng mát</td>
+              </tr>
+              <tr class="row-info">
+                <td>
+                  <strong>Dung tích</strong>
+                </td>
+                <td>{{product?.product_size}}</td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+
+      <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <div class="thong-tin-san-pham mb-4">
+          <h3>{{product?.product_name}}</h3>
+          <p>{{product?.product_decription}}</p>
+        </div>
+      </div>
+
+      <div class="tab-pane fade" id="comment" role="tabpanel" aria-labelledby="profile-tab">
+        <div class="thong-tin-san-pham mb-4">
+          
+          <app-comment *ngIf="selectedProductID" [ProductID]="selectedProductID"></app-comment>
+        </div>
+      </div>
+      
+    </div>
+    <app-shopping-cart [productOP]="selectedProduct" ></app-shopping-cart>
+    <!-- <app-san-pham-tuong-tu></app-san-pham-tuong-tu> -->
+  </div>
+</div>

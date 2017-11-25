@@ -1,0 +1,27 @@
+<h3>Tất cả các sản phẩm</h3>
+<table class="table table-default table-bordered">
+    <tr>
+        <th>ID</th>
+        <th class="name">Tên</th>
+        <th>Loại</th>
+        <th>Dung tích</th>
+        <th class="image-url">Hình ảnh</th>
+    </tr>
+
+    <tr *ngFor="let product of products" data-toggle="modal" data-target="#modalProduct" [class.selected]="product === selectedProduct" (click)="onSelect(product)">
+        <td>{{product.product_id}}</td>
+        <td class="name">{{product.product_name}}</td>
+        <td>{{product.product_kind}}</td>
+        <td>{{product.product_size}}</td>
+        <td class="image-url">
+            <img src="{{product.product_image}}" width="60px" >
+        </td>
+    </tr>
+</table>
+
+<!-- Button trigger modal
+Khi click vào mỗi dòng sẽ hiện modal của từng sản phẩm để admin có thể thay đổi thông tin sản phẩm
+-->
+
+<!-- Modal -->
+<app-modal-product [product]="selectedProduct"></app-modal-product>

@@ -1,0 +1,43 @@
+.donhang {
+    font-size: 13px;
+}
+.card {
+    cursor: pointer;
+}
+.card-title {
+    font-size: 13px;
+}
+
+table {
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+.form-control {
+    margin-bottom: 8px;
+}
+
+.product {
+    /* cursor: pointer; */
+}
+
+th {
+    text-align: center;
+}
+
+.product:hover {
+    background: rgba(0,0,0,0.05);
+}
+
+.badge-danger:hover {
+    background: #343a40;
+}
+
+/* .fa-window-close {
+    font-size: 19px;
+    color: red;
+}
+
+.fa-window-close:hover {
+    color: #333;
+} */

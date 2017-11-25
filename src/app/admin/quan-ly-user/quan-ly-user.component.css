@@ -1,0 +1,14 @@
+
+td, th {
+    font-size: 13px;
+}
+h5 {
+    font-size: 15px;
+}
+a {
+    color: #333;
+}
+a:hover {
+    text-decoration: none;
+    color: black;
+}

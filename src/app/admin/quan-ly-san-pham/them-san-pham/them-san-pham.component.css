@@ -1,0 +1,30 @@
+form {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.flex-item-input-image {
+    /* margin: auto; */
+}
+
+.flex-item {
+    /* margin: 0 15px; */
+    /* margin: auto; */
+    /* flex: 1 10%; */
+    /* align-self: flex-end; */
+}
+
+.required {
+    color: #dc143c;
+    font-size: 11px;
+}
+
+@media only screen and (max-width: 768px) {
+    form {
+        margin-left: 20px;
+    }
+    label {
+        display: none;
+    }
+}

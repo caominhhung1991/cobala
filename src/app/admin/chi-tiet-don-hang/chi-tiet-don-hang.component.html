@@ -1,0 +1,145 @@
+<div *ngIf="donhang" class="donhang mb-5 mt-2">
+  <span class="pull-left">Chi tiết đơn hàng #{{donhang.id}} </span> -
+  <b>{{donhang.status}}</b>
+  <span class="pull-right">Ngày đặt hàng: {{donhang.timeModified | date:'hh:mm - dd/MM/y'}}</span>
+
+  <div class="row mt-4 mb-4">
+    <!-- Địa chỉ người người nhận -->
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Địa chỉ người nhận</h4>
+          <label for="city" class="label-control">Thành phố:</label>
+          <input type="text" id="city" class="form-control form-control-sm" [(ngModel)]="donhang.city" name="city">
+          <label for="address" class="label-control">Địa chỉ:</label>
+          <input type="text" id="address" class="form-control form-control-sm" [(ngModel)]="donhang.address" name="address">
+
+          <!-- <p class="card-text">Địa chỉ: {{donhang.detail}} {{donhang.address}}</p> -->
+        </div>
+      </div>
+    </div>
+    <!-- Thông tin khách hàng -->
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Thông tin khách hàng</h4>
+          <label for="name" class="label-control">Tên:</label>
+          <input type="text" id="name" class="form-control form-control-sm" [(ngModel)]="donhang.name" name="name">
+          <label for="phone" class="label-control">Phone:</label>
+          <input type="text" id="phone" class="form-control form-control-sm" [(ngModel)]="donhang.phone" name="phone">
+        </div>
+      </div>
+    </div>
+    <!-- Lời nhắn -->
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Lời nhắn</h4>
+          <textarea class="form-control form-control-sm" name="payment" id="payment" cols="32" rows="2" [(ngModel)]="donhang.loi_nhan"
+            placeholder="Lời nhắn của khách hàng"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button *ngIf="donhang.status === 'Chưa xử lý'" data-toggle="modal" data-target="#sanPham" class="btn btn-outline-info btn-sm mb-2">Thêm sản phẩm</button>
+  <!-- Thông tin chi tiết sản phẩm của đơn hàng -->
+  <div class="product">
+    <table class="table">
+      <thead class="thead-default">
+        <tr>
+          <th>Mã SP</th>
+          <th width="45%">Sản phẩm</th>
+          <th>Giá</th>
+          <th width="13%">Số lượng</th>
+          <th width="10%">SL tồn kho</th>
+          <th width="10%">Tạm tính</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of donhang.order_detail, index as i">
+          <td>{{product.product_id}}</td>
+          <td width="50%">
+            {{product.product_name}}
+            <span *ngIf="donhang.status === 'Chưa xử lý'" class="badge badge-danger pointer" (click)="removeProduct(i)"
+              data-toggle="tooltip" data-placement="bottom" title="Delete this product"> X</span>
+          </td>
+          <td style="text-align: right">{{product.price | number}}</td>
+          <td width="13%">
+            <input type="number" class="form-control form-control-sm" [ngClass]="{'bg-danger text-white': product.quantity > productInventory[product._id]}"
+              [disabled]="donhang.status=='Đang chờ giao'" [(ngModel)]="product.quantity" placeholder="{{product.quantity}}"
+              (change)="tinhTien(product)">
+          </td>
+          <td width="10%">
+            <span *ngIf="donhang.status === 'Chưa xử lý'">
+              {{ productInventory[product._id] }}
+            </span>
+          </td>
+          <td style="text-align: right">{{product.total_price | number}}</td>
+        </tr>
+        <tr>
+          <td colspan="5" style="text-align: right" width="10%">
+            <b>Tổng tiền</b>
+          </td>
+          <td style="text-align: right;">
+            <b>{{ donhang.tong_tien | number}}</b>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <div class="xac-nhan clearfix" *ngIf="donhang.status === 'Chưa xử lý' || donhang.status === 'Đang chờ giao'">
+    <button class="btn btn-sm btn-outline-danger pull-right ml-1" (click)="deleteOrderByAdmin()">Huỷ bỏ đơn hàng</button>
+    <button *ngIf="donhang.status === 'Chưa xử lý'" class="btn btn-sm btn-outline-primary pull-right ml-1" (click)="updateOrderByAdmin()">Cập nhật</button>
+    <button class="btn btn-sm btn-outline-info pull-right" (click)="refresh()">Refresh</button>
+    <button class="btn btn-md btn-success pull-left mb-3" (click)="accessOrderByAdmin(donhang.status)">Xác nhận {{donhang.status}}</button>
+  </div>
+
+  <app-phieu-xuat-kho *ngIf="donhang.status === 'Chưa xử lý'" [donhang]="donhang"></app-phieu-xuat-kho>
+</div>
+
+<!-- Modal Thêm Sản Phẩm -->
+<div class="modal fade" id="sanPham" tabindex="-1" role="dialog" aria-labelledby="sanPhamTitle" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="sanPhamTitle">Thêm Sản Phẩm </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>STT</th>
+              <th>ID</th>
+              <th>Tên</th>
+              <th width="10%">Hình</th>
+              <th width="15%">Giá(đ)</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let product of products, index as i_product" class="product" (click)="onAddProduct(product)">
+              <td>
+                <b>{{i_product+1}}</b>
+              </td>
+              <td>{{product.product_id}}</td>
+              <td>{{product.product_name}}</td>
+              <td width="10%">
+                <img class="img-fluid" [src]="product.product_image" alt="image">
+              </td>
+              <td style="text-align: right" width="15%">
+                <strong>{{product.sub_prod[0].price | number}}</strong>
+              </td>
+            </tr>
+          </tbody>
+
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

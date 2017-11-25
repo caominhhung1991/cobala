@@ -1,0 +1,23 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Ngày xử lý</th>
+      <th>Mã đơn hàng</th>
+      <th>Tổng tiền đơn hàng</th>
+      <th>Trạng thái đơn hàng</th>
+      <th>Địa chỉ nhận hàng</th>
+      <th>Thông tin chi tiết</th>
+    </tr>
+  </thead>
+
+  <tbody *ngIf="donhangs">
+    <tr *ngFor="let donhang of donhangs">
+      <td>{{donhang.timeModified | date}}</td>
+      <td>{{donhang.id}}</td>
+      <td class="text-danger"><strong>{{donhang.tong_tien | number}}đ</strong></td>
+      <td ><strong>{{donhang.status}}</strong> <i *ngIf="donhang.status == 'Chưa xử lý'" class="fa fa-remove pointer text-danger hover-black" (click)="huyDonHang(donhang.id)"></i></td>
+      <td>{{donhang.address}} {{donhang.city}}</td>
+      <td>{{donhang.loi_nhan}}</td>
+    </tr>
+  </tbody>
+</table>

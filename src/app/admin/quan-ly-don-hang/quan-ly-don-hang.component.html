@@ -1,0 +1,80 @@
+<app-nav-admin [isActive]="1"></app-nav-admin>
+<div class="container-fluid quan-ly-don-hang">
+    <div class="row d-flex d-md-block flex-nowrap wrapper">
+        <div class="col-md-2 float-left col-1 pl-0 pr-0 collapse width show" id="sidebar">
+            <div class="list-group border-0 card text-center text-md-left">
+
+                <!-- Đang chờ xử lý -->
+                <a href="#chua-xu-ly" class="list-group-item d-inline-block collapsed" data-toggle="collapse" data-parent="#sidebar" aria-expanded="false">
+                    <i class="fa fa-hand-lizard-o"></i> 
+                    <span class="d-none d-md-inline">
+                        Chưa xử lý 
+                        <span class="badge badge-danger">{{numCXL}}</span> 
+                    </span> 
+                </a>
+                
+                <div class="collapse" id="chua-xu-ly">
+                    <a class="list-group-item donhang-id" data-parent="#chua-xu-ly" *ngFor="let item_cxl of chuaXuLy, index as i_cxl" 
+                        (click)="onSelect(item_cxl)" [style.cursor]="'pointer'">
+                        {{i_cxl+1}} - {{item_cxl.id}}
+                    </a>
+                </div>
+
+                <!-- Đang chờ giao -->
+                <a href="#dang-cho-giao" class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false">
+                        <i class="fa fa-truck"></i> 
+                        <span class="d-none d-md-inline">
+                            Đang chờ giao 
+                            <span class="badge badge-warning">{{numDCG}}</span>
+                        </span> 
+                    </a>
+                <div class="collapse" id="dang-cho-giao">
+                    <a class="list-group-item donhang-id" data-parent="#dang-cho-giao" *ngFor="let item_dcg of dangChoGiao, index as i_dcg" 
+                        (click)="onSelect(item_dcg)" [style.cursor]="'pointer'" >
+                        {{i_dcg+1}} - {{item_dcg.id}}
+                    </a>
+                </div>
+
+                <!-- Đã hoàn thành -->
+                <a href="#da-hoan-thanh" class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false">
+                        <i class="fa fa-smile-o"></i> 
+                        <span class="d-none d-md-inline">
+                            Đã hoàn thành 
+                            <span class="badge badge-info">{{numDHT}}</span>
+                        </span> 
+                    </a>
+                <div class="collapse" id="da-hoan-thanh">
+                    <a class="list-group-item donhang-id" data-parent="#da-hoan-thanh" *ngFor="let item_dht of daHoanThanh, index as i_dht"
+                        (click)="onSelect(item_dht)" [style.cursor]="'pointer'">
+                    {{i_dht+1}} - {{item_dht.id}}
+                    </a>
+                </div>
+
+                <!-- Đơn hàng khác -->
+                <a href="#all" class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false">
+                        <i class="fa fa-database"></i> 
+                        <span class="d-none d-md-inline">
+                            Đã huỷ
+                            <span class="badge badge-info">{{numAD}}</span>
+                        </span> 
+                    </a>
+                <div class="collapse" id="all">
+                    <a class="list-group-item donhang-id" data-parent="#all" *ngFor="let item_ad of allOrder, index as i_ad"
+                    (click)="onSelect(item_ad)" [style.cursor]="'pointer'" >
+                        {{i_ad+1}} - {{item_ad.id}}
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <main class="col-md-10 main">
+            <div class="row">
+                <div class="col-md-12">
+                    <app-chi-tiet-don-hang [donhang]="selectedDonhang"></app-chi-tiet-don-hang>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+

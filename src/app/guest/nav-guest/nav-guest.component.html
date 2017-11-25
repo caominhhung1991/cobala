@@ -1,0 +1,127 @@
+<nav class="navbar navbar-expand-sm navbar-light bg-light sticky-top">
+  <a class="navbar-brand" routerLink="/home-page">
+    <img src="../../../assets/logo.svg" width="40" height="40" class="d-inline-block align-top" alt="">
+  </a>
+
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item">
+      <form class="form-inline search-form">
+        <div class="input-group">
+          <input id="search" type="search" class="form-control" placeholder="Tìm kiếm ..." aria-label="Username" aria-describedby="basic-addon1" name="search" [(ngModel)]="productFilter.product_name" #search="ngModel" required>
+          <span class="input-group-addon" id="basic-addon1" (click)="removeTextSearch()">
+              <span style="font-size:19px">&times;</span>
+          </span>
+        </div>
+        <div *ngIf="search.valid && search.dirty" id="search-result">
+            <li *ngFor="let p of products_search| filterBy:productFilter" (click)="seeProductDetail(p)">{{p.product_name}}</li>
+        </div>
+      </form>
+
+    </li>
+
+  </ul>
+  
+  <div class="shopping-cart" data-toggle="modal" data-target="#shopping-cart">
+    <i class="fa fa-shopping-basket"></i>
+  </div>
+</nav>
+
+<div class="nav2" style="background: #f5f5f5;">
+  <ul class="justify-content-center dieu-huong">
+    <li class="">
+      <a class="left" [class.active]="isActive == 1" routerLink="/home-page">Khám Phá</a>
+    </li>
+    <li class="">
+      <a [class.active]="isActive == 2" href="#nganh-hang">Ngành Hàng</a>
+    </li>
+    <li class="">
+      <a class="right" [class.active]="isActive == 3" routerLink="/contact">Phản hồi</a>
+    </li>
+  </ul>
+
+  <!-- phần đăng ký -->
+  <form class="form-inline dang-ky mr-5">
+    <span>
+      <i class="fa fa-user-o mr-2"></i>
+    </span>
+    <span *ngIf="currentUser==null" class="pointer" data-toggle="collapse" data-target="#user-login" aria-expanded="false" aria-controls="user-login">
+      Đăng nhập & Đăng ký
+      <br>Tài khoản
+      <i class="fa fa-sort-desc"></i>
+    </span>
+
+    <span *ngIf="currentUser" class="pointer" data-toggle="collapse" data-target="#user-info" aria-expanded="false" aria-controls="user-info">
+      {{currentUser.name}}
+      <br>Tài khoản
+      <i class="fa fa-sort-desc"></i>
+    </span>
+    <!-- collapse đăng nhập -->
+    <div class="collapse" id="user-login">
+      <div class="card card-body">
+        <button class="btn btn-danger mb-1" data-toggle="modal" data-target="#dang-nhap">Đăng nhập</button>
+        <p>Chưa có tài khoản?
+          <br>
+          <a href="#" class="dktk" (click)="$event.preventDefault()" data-toggle="modal" data-target="#dang-ky">Đăng ký tài khoản mới</a>
+        </p>
+      </div>
+    </div>
+    <!-- collapse đã đăng nhập -->
+    <div class="collapse" id="user-info">
+      <ul class="list-group">
+        <li class="list-group-item pointer hover" (click)="quanLyTaiKhoan()">Quản lý tài khoản</li>
+        <li class="list-group-item pointer hover" (click)="router.navigate(['/hoan-tat-thanh-toan'])">Đơn hàng của tôi</li>
+        <li class="list-group-item pointer hover" (click)="logOut()">Đăng xuất</li>
+      </ul>
+    </div>
+  </form>
+</div>
+
+<!-- Modal đăng nhập -->
+<div class="modal fade" id="dang-nhap" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Đăng nhập tài khoản</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <app-login></app-login>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Sign-up - đăng ký mới user -->
+<app-sign-up (currentUser)="getUser($event)" [inputUser]="selectedUser"></app-sign-up>
+
+
+<!-- <div class="container">
+  <div class="row">
+    <nav class="navbar">
+      <input class="form-control" type="text" name="search" [(ngModel)]="filter">
+    </nav>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th (click)="sort('name')">
+            Name <span class="fa" *ngIf="key =='name'" [ngClass]="{'fa-chevron-up':reverse,'fa-chevron-down':!reverse}"></span>
+          </th>
+          <th (click)="sort('genre')">
+            Genre <span class="fa" *ngIf="key =='genre'" [ngClass]="{'fa-chevron-up':reverse,'fa-chevron-down':!reverse}"></span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let game of games | orderBy: key: reverse | filter:filter | paginate: {itemsPerPage: 5, currentPage: p}; let i = index">
+          <td>{{i+1}}</td>
+          <td>{{game.name}}</td>
+          <td>{{game.genre}}</td>
+        </tr>
+      </tbody>
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </table>
+  </div>
+</div> -->

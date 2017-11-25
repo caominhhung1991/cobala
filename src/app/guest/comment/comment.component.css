@@ -1,0 +1,47 @@
+/* #comment:focus + .btn-comment  {
+    display: block;
+}
+
+.btn-comment {
+    display: none;
+}
+
+.btn-comment:hover {
+    display: block;
+} */
+
+.comment-heading {
+    font-size: 15px;
+    margin-bottom: 0px;
+}
+
+.comment-text {
+    font-size: 13px;
+}
+
+
+
+/* .rating > span:hover:before {
+    content: "\2605";
+    position: absolute;
+    
+ } */
+
+
+ .rating {
+    unicode-bidi: bidi-override;
+    direction: rtl;
+  }
+  .rating > span:hover:before,
+  .rating > span:hover ~ span:before {
+     content: "\2605";
+     position: relative;
+     cursor: pointer;
+  }
+
+  .ngayHT {
+    color: #a7a7a7;
+    font-size: 13px;
+    position: relative;
+    /* top: -2px; */
+}
