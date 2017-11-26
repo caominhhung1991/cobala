@@ -66,23 +66,8 @@ import { NganhHangComponent } from './nganh-hang/nganh-hang.component';
     NganhHangComponent
   ],
   exports: [
-    HomePageComponent,
-    NavGuestComponent,
-    SliderGuestComponent,
-    ProductsComponent,
-    ProductDetailComponent,
-    SanPhamTuongTuComponent,
-    ShoppingCartComponent,
-    ModalProductDetailComponent,
-    HoanTatThanhToanComponent,
-    LoginComponent,
-    SignUpComponent,
-    QuanLyTaiKhoanComponent,
-    DoiPasswordComponent,
-    LichSuDonHangComponent,
-    SuaThongTinComponent,
-    CommentComponent,
-    ContactComponent
+    RouterModule,
+    LichSuDonHangComponent
   ]
   // schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })

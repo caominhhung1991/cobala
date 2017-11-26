@@ -19,7 +19,6 @@ import { ContactComponent } from './guest/contact/contact.component';
 import { NganhHangComponent } from './guest/nganh-hang/nganh-hang.component';
 
 const routes: Routes = [
-    { path: '', component: HomePageComponent },
     { path: 'admin', canActivate: [AuthguardGuard], component: AdminComponent },
     { path: 'guest', component: QuanLyTaiKhoanComponent},
     // { path: 'admin', component: AdminComponent},
@@ -31,8 +30,8 @@ const routes: Routes = [
     { path: 'hoan-tat-thanh-toan', component: HoanTatThanhToanComponent},
     { path: 'product/:id', component: ProductDetailComponent},
     { path: 'shopping-cart', component: ShoppingCartComponent },
-    { path: 'home-page', component: HomePageComponent },
-    { path: 'contact', component: ContactComponent},
+    // { path: 'home-page', component: HomePageComponent },
+    // { path: 'contact', component: ContactComponent},
     { path: 'nganh-hang', component: NganhHangComponent},
     // { path: 'product-detail', component: ProductDetailComponent },
     { path: '**', component: NotfoundComponent }

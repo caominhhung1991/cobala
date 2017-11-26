@@ -40,9 +40,11 @@ export class QuanLyUserComponent implements OnInit {
       this.donhangs = res;
     });
   }
+  
   onSelect(user) {
     this.selectedUser = user;
   }
+
   ngOnInit() {
     this.getUsers();
   }

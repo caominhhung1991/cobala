@@ -12,6 +12,7 @@ export class QuanLyTaiKhoanComponent implements OnInit {
 
   getCurrentUser() {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    console.log(this.currentUser)
   }
 
   onSelect() {
@@ -20,6 +21,7 @@ export class QuanLyTaiKhoanComponent implements OnInit {
 
   ngOnInit() {
     this.getCurrentUser();
+    
   }
 
 

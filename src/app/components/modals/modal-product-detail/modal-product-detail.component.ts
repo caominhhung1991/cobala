@@ -16,7 +16,9 @@ export class ModalProductDetailComponent implements OnInit {
   increase() {
     this.product.quantity += 1;
   }
-
+  pushOneProduct() {
+    
+  }
   decrease() {
     if(this.product.quantity > 1 ) {
       this.product.quantity -= 1;

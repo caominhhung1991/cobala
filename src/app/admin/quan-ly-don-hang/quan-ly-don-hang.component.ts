@@ -9,8 +9,8 @@ import { GuestService } from './../../service/guest.service';
   styleUrls: ['./quan-ly-don-hang.component.css']
 })
 export class QuanLyDonHangComponent implements OnInit {
-  private donhangsChuaXuLy: any;
-  private selectedDonhang: any;
+  public donhangsChuaXuLy: any;
+  public selectedDonhang: any;
 
   constructor(
     private adminService: AdminService,

@@ -3,3 +3,9 @@ footer {
     padding: 20px 0;
     border-top: 2px solid #eee;
 }
+
+.up {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+}

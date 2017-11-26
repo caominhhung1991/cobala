@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
-import { Ng2FileInputModule } from 'ng2-file-input';
 // module
 import { AdminRoutingModule } from './admin-routing.module';
 import { GuestModule } from './../guest/guest.module';

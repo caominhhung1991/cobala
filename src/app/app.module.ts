@@ -33,23 +33,20 @@ import { SuaThongTinComponent} from './guest/sua-thong-tin/sua-thong-tin.compone
   imports: [
     BrowserModule,
     HttpModule,
-    AppRoutingModule,
     AdminModule,
     GuestModule,
     FormsModule,
     ComponentModule,
-    // Ng2SearchPipeModule
+    AppRoutingModule
+    
   ],
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
     UserComponent,
-    // SignUpComponent,
-    // ShoppingCartComponent,
     NotfoundComponent,
     ModalChooseProductComponent,
-    // SuaThongTinComponent
   ],
   providers: [
     MainService,

@@ -12,6 +12,7 @@ declare var $:any;
 export class SuaThongTinComponent implements OnInit {
 
   @Input() set inputUser(_user:any) {
+    console.log(_user);
     this.user = (_user || {});
   } 
   get inputUser():any { return this.user };
@@ -40,6 +41,7 @@ export class SuaThongTinComponent implements OnInit {
     } else if(form.address == "" || form.address == undefined) {
       this.messageError.address = true;
     } else {
+      console.log(form);
       this.mainService.updateUserByGuest(form).then(res => {
         console.log(res);
         alert(res.message);

@@ -26,7 +26,6 @@ export class LoginComponent implements OnInit {
     let password = e.target.elements[1].value;
     this.mainService.getUserByEmail(username).then(res => {
       this.user = res.data;
-      console.log(this.user);
       if(this.user != null) {
         if(password == this.user.password) {
           // this.mainService.setUserLoggedIn(username);
@@ -42,9 +41,11 @@ export class LoginComponent implements OnInit {
           
         } else {
           console.log("Sai password!");
+          alert("Sai password!");
         }
       } else {
         console.log("Tài khoản chưa tồn tại!");
+        alert("Tài khoản chưa tồn tại!");
       }
     });
 
@@ -55,10 +56,6 @@ export class LoginComponent implements OnInit {
     // }
 
     
-  }
-
-  goBack() {
-    window.history.back();
   }
 
   ngOnInit() {

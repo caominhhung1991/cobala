@@ -32,7 +32,7 @@
       <a class="left" [class.active]="isActive == 1" routerLink="/home-page">Khám Phá</a>
     </li>
     <li class="">
-      <a [class.active]="isActive == 2" href="#nganh-hang">Ngành Hàng</a>
+      <a [class.active]="isActive == 2" routerLink="/home-page" (click)="gotoNH()">Ngành Hàng</a>
     </li>
     <li class="">
       <a class="right" [class.active]="isActive == 3" routerLink="/contact">Phản hồi</a>
@@ -69,7 +69,8 @@
     <div class="collapse" id="user-info">
       <ul class="list-group">
         <li class="list-group-item pointer hover" (click)="quanLyTaiKhoan()">Quản lý tài khoản</li>
-        <li class="list-group-item pointer hover" (click)="router.navigate(['/hoan-tat-thanh-toan'])">Đơn hàng của tôi</li>
+        <!-- <li class="list-group-item pointer hover" (click)="router.navigate(['/hoan-tat-thanh-toan'])">Đơn hàng của tôi</li> -->
+        <li class="list-group-item pointer hover" routerLink="hoan-tat-thanh-toan">Đơn hàng của tôi</li>
         <li class="list-group-item pointer hover" (click)="logOut()">Đăng xuất</li>
       </ul>
     </div>

@@ -16,7 +16,7 @@
 
         <div class="form-group">
             <input type="email" placeholder="Email của bạn.." class="form-control w-30" name="email" [(ngModel)]="email_" #email="ngModel" required email>
-            <div *ngIf="email.invalid && (email.dirty || email.touched || messageError.email.required)">
+            <div *ngIf="email.invalid && (email.dirty || email.touched || messageError.email)">
                 <div *ngIf="email.errors.required">
                   <span class="required">Email không được để trống</span>
                 </div>

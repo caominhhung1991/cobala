@@ -7,6 +7,9 @@ import { MainService } from './../../service/main.service';
 import { TestService} from './../../service/test.service';
 
 import 'rxjs/add/operator/switchMap';
+// declare variable jquery and $ to use jquery plugin
+declare var jquery: any;
+declare var $: any;
 
 @Component({
   selector: 'app-product-detail',
@@ -63,6 +66,8 @@ export class ProductDetailComponent implements OnInit {
   
   id:string;
   ngOnInit() {
+    window.scrollTo(0,0);
+    
     let _id: string = "";
     this.route.paramMap.switchMap((params: ParamMap) => {
       return params.get('id').toString();

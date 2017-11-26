@@ -27,9 +27,9 @@
 
       <!-- Welcome -->
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="http://example.com" data-toggle="dropdown">Welcome {{name}}</a>
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown">Welcome {{name}}</a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" routerLink="/login" (click)="logout()">{{name=='unknown' ? 'Sign In': "Logout"}}</a>
+          <a class="dropdown-item" routerLink="" (click)="logout()">{{name=='unknown' ? 'Sign In': "Logout"}}</a>
         </div>
       </li>
     </ul>
