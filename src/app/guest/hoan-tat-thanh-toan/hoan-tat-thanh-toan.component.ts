@@ -80,12 +80,16 @@ export class HoanTatThanhToanComponent implements OnInit {
 
   ngOnInit() {
     this.user = (JSON.parse(localStorage.getItem("currentUser")) || {});
+
     if(this.user != {}) {
       console.log("Có user - Hàm khởi tạo");
       this.ganUserVaoTTDH(this.user);
     }
+
     this.initMessageError();
+
     this.products = JSON.parse(localStorage.getItem("cart")) ;
+    
     this.TinhTongTienCart();
   }
 

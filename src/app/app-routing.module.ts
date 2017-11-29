@@ -19,7 +19,6 @@ import { ContactComponent } from './guest/contact/contact.component';
 import { NganhHangComponent } from './guest/nganh-hang/nganh-hang.component';
 
 const routes: Routes = [
-    { path: 'admin', canActivate: [AuthguardGuard], component: AdminComponent },
     { path: 'guest', component: QuanLyTaiKhoanComponent},
     // { path: 'admin', component: AdminComponent},
     { path: 'login', component: LoginComponent },

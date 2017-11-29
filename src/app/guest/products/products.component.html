@@ -7,9 +7,9 @@
   <form class="form-inline">
       <input class="search-product form-control form-control-sm mb-3" type="search" placeholder="Tìm theo tên sản phẩm..." [(ngModel)]="productFilter.product_name" name="search">
       <input id="all" type="radio" name="kind" value="all" checked (click)="search('all')"> <label for="all">Tất cả</label>
-      <input id="moi" type="radio" name="kind" value="Môi" (click)="search('Môi')"> <label for="moi">SP cho Môi</label>
-      <input id="mat" type="radio" name="kind" value="Mắt" (click)="search('Mắt')"> <label for="mat">SP cho Mắt</label>
-      <input id="da" type="radio" name="kind" value="Da" (click)="search('Da')"> <label for="da">SP cho Da</label>
+      <input id="lamdep" type="radio" name="kind" value="Làm đẹp" (click)="search('Làm đẹp')"> <label for="lamdep">SP làm đẹp</label>
+      <input id="chamsocda" type="radio" name="kind" value="Chăm sóc mặt" (click)="search('Chăm sóc mặt')"> <label for="chamsocda">SP chăm sóc mặt</label>
+      <input id="toanthan" type="radio" name="kind" value="Toàn thân" (click)="search('Toàn thân')"> <label for="toanthan">SP chăm sóc toàn thân</label>
   </form>
 
   <!-- Sản phẩm ưa chuộng -->

@@ -3,6 +3,8 @@ import {Router} from '@angular/router';
 import {Location} from '@angular/common';
 // service
 import { MainService } from './../../../service/main.service';
+import { AdminService } from '../../../service/admin.service';
+
 // Object
 import { Product } from './../../../objects/product';
 // Component 
@@ -19,6 +21,9 @@ declare var $:any;
 })
 
 export class ThemSanPhamComponent implements OnInit {
+  products;
+  regMaSanPham = false;
+  regMaSanPhamTonTai = false;
   messageError:any = {};
   product = new Product(
      "", "", "", "", "", "", "", "", "", ""
@@ -26,6 +31,7 @@ export class ThemSanPhamComponent implements OnInit {
 
 constructor(
   private mainService: MainService,
+  private adminService: AdminService,
   private router: Router,
   private location: Location
 ) { 
@@ -46,12 +52,22 @@ onSubmit() {
 
 ngOnInit() {
   this.initMessageError();
+  this.mainService.getListProducts().subscribe(res => {
+    this.products = res;
+  })
   // console.log(this.product);
 }
 
 checkFormInput(form) {
   if(form.product_id == "" || form.product_id == undefined) {
     this.messageError.productID = true;
+  } else if(this.adminService.kiemTraMaSanPham(form.product_id) == false) {
+    // Kiểm tra mã sản phẩm nếu sai
+    // alert('Sản phẩm phải là TD0000 hoặc CSM0000 hoặc TT0000');
+    this.regMaSanPham = true;
+  } else if(this.kiemTraMaSanPhamTonTai(form.product_id)) {
+    // Kiểm tra mã sản phẩm nếu đúng, tồn tại
+    this.regMaSanPhamTonTai = true;
   } else if(form.product_name == "" || form.product_name == undefined) {
     this.messageError.name = true;
   } else if(form.product_size == "" || form.product_size == undefined) {
@@ -88,6 +104,30 @@ checkFormInput(form) {
     //   // this.location.back();
     // }, res => console.log(res));
   }
+}
+
+kiemTraKhiThayDoi(maSP:string) {
+  if(this.kiemTraMaSanPhamTonTai(maSP) == false) {
+    this.regMaSanPhamTonTai = false;
+  } else {
+    this.regMaSanPhamTonTai = true;
+  }
+  if(this.adminService.kiemTraMaSanPham(maSP) == true) {
+    this.regMaSanPham = false;
+  } else {
+    this.regMaSanPham = true;
+  }
+}
+
+// Kiểm tra mã sản phẩm đã tồn tại hay chưa
+kiemTraMaSanPhamTonTai(maSP) {
+  for(let item of this.products) {
+    if(maSP == item.product_id) {
+      
+      return true;
+    }
+  }
+  return false;
 }
 
 initMessageError() {

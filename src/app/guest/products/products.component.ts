@@ -21,9 +21,9 @@ export class ProductsComponent implements OnInit {
   products: any = new Array();
   products2: any;
   listArray: any = new Array();
-  mat: any = new Array();
-  da: any = new Array();
-  moi: any = new Array();
+  lamdep: any = new Array();
+  chamsocmat: any = new Array();
+  toanthan: any = new Array();
   khac: any = new Array();
 
   constructor(
@@ -42,12 +42,12 @@ export class ProductsComponent implements OnInit {
     if (JSON.parse(sessionStorage.getItem('products')) != null) {
       this.products = JSON.parse(sessionStorage.getItem('products'));
       for (let item of this.products) {
-        if (item.product_kind === "Mắt") {
-          this.mat.push(item);
-        } else if (item.product_kind == "Da") {
-          this.da.push(item);
-        } else if (item.product_kind == "Môi") {
-          this.moi.push(item);
+        if (item.product_kind === "Làm đẹp") {
+          this.lamdep.push(item);
+        } else if (item.product_kind == "Chăm sóc mặt") {
+          this.chamsocmat.push(item);
+        } else if (item.product_kind == "Toàn thân") {
+          this.toanthan.push(item);
         } else {
           console.log(item);
           this.khac.push(item);
@@ -59,12 +59,12 @@ export class ProductsComponent implements OnInit {
           if (item.sub_prod[0]) {
             this.products.push(item);
 
-            if (item.product_kind === "Mắt") {
-              this.mat.push(item);
-            } else if (item.product_kind == "Da") {
-              this.da.push(item);
-            } else if (item.product_kind == "Môi") {
-              this.moi.push(item);
+            if (item.product_kind === "Làm đẹp") {
+              this.lamdep.push(item);
+            } else if (item.product_kind == "Chăm sóc mặt") {
+              this.chamsocmat.push(item);
+            } else if (item.product_kind == "Toàn thân") {
+              this.toanthan.push(item);
             } else {
               console.log(item);
               this.khac.push(item);
@@ -73,17 +73,15 @@ export class ProductsComponent implements OnInit {
         }
         console.log(this.products);
         sessionStorage.setItem('products', JSON.stringify(this.products));
-        sessionStorage.setItem('mat', JSON.stringify(this.mat));
-        sessionStorage.setItem('da', JSON.stringify(this.da));
-        sessionStorage.setItem('moi', JSON.stringify(this.moi));
+        sessionStorage.setItem('lamdep', JSON.stringify(this.lamdep));
+        sessionStorage.setItem('chamsocmat', JSON.stringify(this.chamsocmat));
+        sessionStorage.setItem('toanthan', JSON.stringify(this.toanthan));
         sessionStorage.setItem('khac', JSON.stringify(this.khac));
         // localStorage.setItem('products', JSON.stringify(this.products));
       }, res => console.log(res));
     }
     return this.products;
   }
-
-
 
   onSelect(product: any) {
     this.selectedProduct = {
@@ -118,12 +116,12 @@ export class ProductsComponent implements OnInit {
 
   key:string = 'all';
   search(key) {
-    if(key === 'Môi') {
-      this.products = JSON.parse(sessionStorage.getItem("moi"));
-    } else if(key === 'Mắt') {
-      this.products = JSON.parse(sessionStorage.getItem("mat"))
-    } else if(key == 'Da') {
-      this.products = JSON.parse(sessionStorage.getItem('da'))
+    if(key === 'Làm đẹp') {
+      this.products = JSON.parse(sessionStorage.getItem("lamdep"));
+    } else if(key === 'Chăm sóc mặt') {
+      this.products = JSON.parse(sessionStorage.getItem("chamsocmat"))
+    } else if(key == 'Toàn thân') {
+      this.products = JSON.parse(sessionStorage.getItem('toanthan'))
     } else if(key === 'all'){
       this.products = JSON.parse(sessionStorage.getItem("products"))
     }

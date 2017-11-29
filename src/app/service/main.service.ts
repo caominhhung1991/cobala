@@ -37,7 +37,8 @@ export class MainService {
   // get list of product
   getListProducts(){
     return this._http.get("/api/products")
-      .map(res => this.result = res.json().data )
+      .map(res => this.result = res.json().data 
+    )
   }
 
   // post
@@ -76,7 +77,7 @@ export class MainService {
   }
 
   // --- Kho - Inventory--- //
-  // Lấy 1 sản phẩm từ kho, params: _id
+  // GET - Lấy 1 sản phẩm từ kho, params: _id
   getProductFromInventory(_id: string): Promise<any> {
     const url = `/api/inventory/${_id}`;
     return this._http.get(url, {headers: this.headers})
@@ -84,7 +85,7 @@ export class MainService {
       .then(res => this.result = res.json())
       .catch(this.handleError);
   }
-  // Thêm 1 sản phẩm vào kho, params: product
+  // POST - Thêm 1 sản phẩm vào kho, params: product
   addProductToInventory(product: any): Promise<any> {
     const url = "/api/inventory";
     return this._http.post(url, JSON.stringify(product), {headers: this.headers})
@@ -92,7 +93,7 @@ export class MainService {
     .then(res => product)
     .catch(this.handleError);
   }
-  // Cập nhật 1 sản phẩm đã có vào kho, params: product
+  // PUT - Cập nhật 1 sản phẩm đã có vào kho, params: product
   updateProductToInventory(product: any): Promise<any> {
     const url = `/api/inventory/${product._id}`;
     return this

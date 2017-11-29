@@ -47,6 +47,7 @@ export class PhieuNhapKhoComponent implements OnInit {
   }
  
   addPhieuNhapKho() {
+    $('#btnPhieuNhapKho').prop('disabled', true);
     this.phieuNhapKho.phieu_id = $('#ma_phieu').val();
     this.phieuNhapKho.products_detail = this.products;
     this.phieuNhapKho.nguoi_lap_phieu = $("#nguoi_lap_phieu").html();
@@ -61,7 +62,14 @@ export class PhieuNhapKhoComponent implements OnInit {
               - Nếu sản phẩm chưa có trong kho từ phiếu nhập hàng thì thêm mới
               - Nếu sản phẩm đã có trong kho thì update*/
           this.addProductsToInventory(res);
-        }, res => console.log(res));
+          $('#btnPhieuNhapKho').prop('disabled', false);
+        }, res => {
+          console.log(res);
+          $('#btnPhieuNhapKho').prop('disabled', false);
+        });
+    } else {
+      alert("Phiếu nhập kho chưa có sản phẩm nào!!");
+      $('#btnPhieuNhapKho').prop('disabled', false);
     }
     
   }

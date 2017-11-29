@@ -38,11 +38,11 @@ import { PhieuXuatKhoComponent } from './phieu-xuat-kho/phieu-xuat-kho.component
     // Ng2FileInputModule.forRoot()
   ],
   declarations: [
+    NavAdminComponent,
     AdminComponent,
     QuanLyDonHangComponent, 
     QuanLySanPhamComponent, 
     DoanhThuComponent,
-    NavAdminComponent,
     ChiTietDonHangComponent,
     ThemSanPhamComponent,
     AllProductComponent,

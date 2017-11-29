@@ -12,7 +12,9 @@ export class AdminService {
   private result:any;
   private donhang:any;
 
-  constructor(private _http: Http) {
+  constructor(
+    private _http: Http
+  ) {
     this.isUserLoggedIn = false;
   }
 
@@ -85,6 +87,18 @@ export class AdminService {
     .toPromise()
     .then(res =>  this.result = res.json().data)
     .catch(this.handleError);
+  }
+
+  kiemTraMaSanPham(maSP: string) {
+    let regLamDep = /^TD\d{4}$/;
+    let regChamSocMat = /^CSM\d{4}$/;
+    let regToanThan = /^TT\d{4}$/;
+    if(regLamDep.test(maSP) == true || regChamSocMat.test(maSP) == true || regToanThan.test(maSP) == true) {
+      console.log('mã sp đúng rồi');
+      return true;
+    }
+    console.log('mã sp sai rồi')
+    return false;
   }
 
   private handleError(error: any): Promise<any> {
