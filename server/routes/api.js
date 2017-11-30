@@ -442,7 +442,7 @@ router.get('/user/:email', (req, res, next) => {
 		db.collection('user')
 			.findOne(request)
 			.then(user => {
-				console.log(user);
+				// console.log(user);
 				response.data = user;
 				res.json(response);
 			})

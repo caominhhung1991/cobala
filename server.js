@@ -53,4 +53,4 @@ module.exports = {
     }
 }
 
-// module.exports = server;
+module.exports = server;

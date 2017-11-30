@@ -11,6 +11,7 @@ declare var $:any;
   styleUrls: ['./sign-up.component.css'],
   providers: [ NavGuestComponent ]
 })
+
 export class SignUpComponent implements OnInit {
   @Input() set inputUser(_user:any) {
     this.updateUser = true;
@@ -21,7 +22,7 @@ export class SignUpComponent implements OnInit {
   get inputUser():any { return this.user };
 
   // @Input() inputUser: any = {};
-
+  
   @Output() currentUser = new EventEmitter();
   updateUser:boolean = false;
   user: any;
@@ -104,7 +105,7 @@ export class SignUpComponent implements OnInit {
       email: "",
       password: "",
       phone: "",
-      birthday: new Date(),
+      birthday: "",
       city: "",
       address: "",
       role: "guest"
